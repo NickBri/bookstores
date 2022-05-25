@@ -1,13 +1,15 @@
-class BooksController < ApplicationController
+class BooksController < SecuredController
   before_action :set_book, only: %i[ show edit update destroy ]
 
   # GET /books or /books.json
   def index
     @books = Book.all
+    render json: @books
   end
 
   # GET /books/1 or /books/1.json
   def show
+    render json: @book
   end
 
   # GET /books/new
@@ -21,7 +23,6 @@ class BooksController < ApplicationController
 
   # POST /books or /books.json
   def create
-    binding.break
     @book = Book.new(book_params)
 
     respond_to do |format|

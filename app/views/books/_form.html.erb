@@ -23,8 +23,7 @@
 
   <div>
     <%= form.label :book_store_ids, style: "display: block" %>
-    <%= form.collection_check_boxes :book_store_ids, BookStore.order(:name),:id,:name,{ hide_label: true } %>
-    <%# <%= form.collection_select :book_store_ids, BookStore.order(:name),:id,:name %> %>
+    <%= form.collection_select :book_store_ids, BookStore.order(:name),:id,:name %>
   </div>
 
   <div>
