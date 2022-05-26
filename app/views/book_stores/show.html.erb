@@ -5,6 +5,12 @@
 <div>
   <%= link_to "Edit this book store", edit_book_store_path(@book_store) %> |
   <%= link_to "Back to book stores", book_stores_path %>
+<br>
+  <% @books.each do |book| %> 
+    <%= link_to "#{book.name}" ,book %>
+    <%= link_to "#{book.stock}" ,book %>
+    <br>
+  <% end %>
 
   <%= button_to "Destroy this book store", @book_store, method: :delete %>
 </div>

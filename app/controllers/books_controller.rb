@@ -3,18 +3,29 @@ class BooksController < SecuredController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
-    render json: @books
+    respond_to do |format|
+      format.html {@books = Book.all}
+      format.json do 
+        @books = Book.all 
+        render json: @books 
+      end
+    end
   end
 
   # GET /books/1 or /books/1.json
   def show
-    render json: @book
+    respond_to do |format|
+        format.html {@book}
+        format.json { render json: @book }
+    end
   end
 
   # GET /books/new
   def new
-    @book = Book.new
+    respond_to do |format|
+      format.html {@book = Book.new}
+      format.json { render json: @book = Book.new }
+    end
   end
 
   # GET /books/1/edit
@@ -24,6 +35,7 @@ class BooksController < SecuredController
   # POST /books or /books.json
   def create
     @book = Book.new(book_params)
+    @book.status = "in_stock"
 
     respond_to do |format|
       if @book.save

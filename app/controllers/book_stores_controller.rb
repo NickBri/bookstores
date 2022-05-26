@@ -8,6 +8,7 @@ class BookStoresController < ApplicationController
 
   # GET /book_stores/1 or /book_stores/1.json
   def show
+    @books = @book_store.books
   end
 
   # GET /book_stores/new

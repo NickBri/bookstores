@@ -5,9 +5,8 @@ class SecuredController < ApplicationController
   private
 
   def authorize_request
-    AuthorizationService.new(request.headers).authenticate_request!
+    AuthorizationService.new(request.headers).authenticate_request! if request.user_agent.include?('curl')
   rescue JWT::VerificationError, JWT::DecodeError
-    # render json: { errors: ['Not Authenticated'] }, status: :unauthorized
-    redirect_to :controller => 'dashboard', :action => 'index'
+    render json: { errors: ['Not Authenticated'] }, status: :unauthorized
   end
 end
