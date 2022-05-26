@@ -8,7 +8,7 @@
 <br>
   <% @books.each do |book| %> 
     <%= link_to "#{book.name}" ,book %>
-    <%= link_to "#{book.stock}" ,book %>
+    <%= link_to "#{book.stock}" ,book %>|<%= book.status %>
     <br>
   <% end %>
 
