@@ -7,7 +7,7 @@ set :environment, "development"
 set :output, "log/cron.log"
 
 every 1.minute do 
-  rake "update_book_statuses:fetch"
+  rake 'update_book_statuses:update_status'
 end
 
 # Learn more: http://github.com/javan/whenever

@@ -52,6 +52,7 @@ class BooksController < SecuredController
   def update
     respond_to do |format|
       if @book.update(book_params)
+        @book.update(status: 'in_stock')  if @book.stock > 0
         format.html { redirect_to book_url(@book), notice: "Book was successfully updated." }
         format.json { render :show, status: :ok, location: @book }
       else
